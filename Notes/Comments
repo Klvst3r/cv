@@ -1,0 +1,14 @@
+Si te refieres a los métodos abreviados de teclado, solo en windows. Les sumo esta solución practica.
+
+La respuesta de jhon chacolla tiene la ventaja que sirve para todos los lenguajes. Osea, sin importar el lenguaje de programación, comenta la linea o varias, según lo seleccionado.
+
+Pero tiene una pega. En sublime text 3 no funcional las teclas para comentar y des-comentar código fácilmente.
+
+En Stack Overflow encontré la solución:
+
+Ir a Preferences->Key Bindings - User y pegar lo siguiente:
+
+{ "keys": ["ctrl+7"], "command": "toggle_comment", "args": { "block": false } },
+{ "keys": ["ctrl+shift+7"], "command": "toggle_comment", "args": { "block": true } }
+
+Para probarlo, selecciona el texto, y presiona simultáneamente Ctrl7. Y listo, a disfrutar! La solución fue reemplazar el métodos abreviados de teclado por defecto Ctrl/. Por Ctrl7, que es la misma tecla en el teclado.
