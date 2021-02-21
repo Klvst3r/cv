@@ -14,13 +14,18 @@ p{
 	font-weight: bold;
 }
 .p-title{
-	font-weight: 100;
+	font-weight: 200;
 }
 header{
 	/*background-color: #3949AB;*/
 	background-color: steelblue;
 	color: white;
 	text-align: center;
+}
+h1{
+	display: inline-block;
+	width: 400px;
+	font-weight: 700;
 }
 .content-div{
 	/*background-color: #F06292;*/
