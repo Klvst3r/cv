@@ -37,6 +37,22 @@ section{
 
 }
 
+.education-div{
+	/*background-color: red;*/
+	display: inline-block;
+	width: 78%;
+	vertical-align: top; /*alineacion a la parte superior*/
+}
+
+.img-div{
+	/*background-color: steelblue;*/
+	display: inline-block;
+	height: 210px;
+	margin-top: 10px;
+	padding-top: 15px;
+
+	width: 20%;	
+}
 .mention-div{
 	/*background-color: #F06292;*/
 	background-color: tomato;
