@@ -28,6 +28,14 @@ h1{
 	width: 400px;
 	font-weight: 700;
 }
+h3{
+  font-size: 1.3em	;
+  font-weight: 400;
+  text-transform: uppercase;
+  /*margin-top: 3em;*/
+  background-color: #99C9FF;
+  padding-left: 0.3em;
+}
 section{
 	height: 200px;
 	margin-left: auto;
@@ -36,7 +44,34 @@ section{
 	width: 960px;
 
 }
+dt{
+	font-size: 18px;
+	text-transform: uppercase;
+	margin-top: 12px;
+	margin-top:16px;
+	
+}
+dd{
+	margin-left: 20px;
+}
 
+ul li{
+	/*color: red;*/
+	margin-left: 1.2em;
+	margin-top:16px;
+	text-decoration: none;
+}
+a{
+  color: black;
+  cursor: pointer;
+  padding-left: 1em;
+  text-decoration: none;
+}
+a:hover{
+  opacity:0.8;
+  color: steelblue;
+  font-weight: 700;
+}
 .education-div{
 	/*background-color: red;*/
 	display: inline-block;
@@ -50,8 +85,13 @@ section{
 	height: 210px;
 	margin-top: 10px;
 	padding-top: 15px;
-
+	padding-right: 0;
 	width: 20%;	
+}
+.me{
+  border-radius:10%;
+  width: 200px;
+
 }
 .mention-div{
 	/*background-color: #F06292;*/
@@ -69,18 +109,6 @@ section{
 /*.others{
 	color: red;
 }*/
-
-dt{
-	font-size: 18px;
-	text-transform: uppercase;
-	margin-top: 12px;
-	margin-top:16px;
-	
-}
-dd{
-	margin-left: 20px;
-}
-ul li{
-	/*color: red;*/
-	margin-top:16px;
+.dot{
+	list-style:none
 }
