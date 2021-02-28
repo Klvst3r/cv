@@ -1,0 +1,24 @@
+Servidor local y puertos:
+
+Hostname:
+Es una etiqueta o un nombre que se le asigna a un dispositivo en la red, la idea es tener un identificacion entendible pero direccionada internamente con una direccion de 128 bits si es ipv4.
+
+Si havcemos localhost, hacemos una peticion a la maquina local.
+
+Port.
+
+Los puertso son puntos de entrada para nocentarse a la red. Las computadoras tienen hasta 65,535 puertos sobre lso que se pueden cominicar a las apilcaciones via red.
+
+0 -1023 puertos del sistemas por que ya tienen una tarea asignada por el tarae y no estan disponibles al usuario
+
+a partir del 1024 podemos utilizar los que mejor consideremos para desarrollo 
+
+En desarollo web, es comuni utilizar los puertos: 8000, 8080, 3000 para colocar servidores web. por concenvion se recomienda utilizar algunos de estos puertos.
+
+Por que no se coloca el puerto al concectarnos a una pagina web.
+
+La respuesta si se comunica mediante un puerto solo que no se visualiza por que se asume que el puerto es el 80, que es el puerto del protocolo http, que es el puerto que se utiliza para comunicar la computadora con el ervidor web.
+
+Si la pagina esta encriptada, el puerto es el 443. De modo que cuando no existe una concexion protegida,se asume que se esta utilizando el puerto 80 sin conexion encriptada o encriptada el puerto 443.
+
+
