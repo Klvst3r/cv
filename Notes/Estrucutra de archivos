@@ -1,0 +1,60 @@
+Estrucutra de archivos
+
+Definir las estructura sobre los archivos y carpetas, es importante para que el equipo de trabajo tenga claro un entendimiento uniforme y comun.
+
+Proyecto:
+
+Boletines.
+
+1. Primera regla.
+Para cada nuevo proyecto es conveniente un nueva carpeta.
+
+2. noletines.
+	Una vez seleccionada podremos iniciar con el archivo index.html
+
+3. index.html
+
+Al momento se han utilizado dos servidores, el de github y el de node.js.
+En ambos casos se sabia cual era el archivo que debia abrirse de manera inidical, por convencion es por ello que debemos utilizar el nombre index.html
+
+/
+|
+---Index
+|
+--/assets (Hace referencia a los recursos necesarios para el desarollo)
+	|
+	----/img
+	|
+	---/css
+	|
+	---/js
+	|
+	---/scripts
+
+4. los nombres en general tienden a ser en ingles para poder compartirlo globalmente y de manera internacional.
+
+5. Todos deben ser en ingles o todo en español o idioma de origen y procurar no mesclar los idiomas.
+
+
+6. Nuestro index.html tiene una estructura inidial como esta:
+
+escribiendo con nuestro editor y el pugin emmet
+
+html:5
+
+o bien html
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	
+	<title></title>
+</head>
+<body>
+	
+</body>
+</html>
+
+
