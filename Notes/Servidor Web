@@ -1,0 +1,61 @@
+Instalar un servidor web on Node.js
+
+1. Ir a :
+	https://nodejs.org/es/
+
+ Si esta configurado el sistema en Ingles la URL es:
+ 	https://nodejs.org/en/
+
+La recomendacion es instalar la version actual:
+	A Febrero de 2021 la version actual es la Version : 15.10.0
+
+	https://nodejs.org/dist/v15.10.0/node-v15.10.0-x64.msi
+
+Aceptar la licencia, siguiente, siguiente hasta terminar el asistente.
+
+
+2. Verificar la instalación:
+
+node -v [15.10.0]
+ 
+npm -v [7.5.3]
+
+
+3. Instalaciones de npm
+	npm install -g node-static
+
+4. Si queremos actualizar podemos hacerlo:
+
+
+npm notice New minor version of npm available! 7.5.3 -> 7.6.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v7.6.0
+npm notice Run npm install -g npm@7.6.0 to update!
+
+
+5. Ahora podemos instalar la libreria Static
+
+npm install -g node-static
+
+6. Probrar el servidor Web
+
+7. Ir a la carpeta del proyecto,
+
+Ej.
+>cd C:\AppServ\www\dev\cv
+
+
+6. Corremos la libreria estatica
+
+static -p 8000 
+
+
+
+C:\AppServ\www\dev\cv>static -p 8000
+serving "." at http://127.0.0.1:8000
+
+Ahora tenemos nuestro servidor web corriendo en el puerto 8000
+
+
+
+7. Haciendo localhost y mostrando la pagina del proyecto.
+
