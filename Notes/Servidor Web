@@ -59,3 +59,223 @@ Ahora tenemos nuestro servidor web corriendo en el puerto 8000
 
 7. Haciendo localhost y mostrando la pagina del proyecto.
 
+
+
+Para otros Sistemas:
+
+Linux Ubuntu:
+
+El repositorio esta en:
+
+https://gist.github.com/willurd/5720255
+
+Distintas formas para ejecutar un servidor web desde la terminal.
+
+Para los ejemplos:
+
+Utilizaremos NodeJs
+
+Each of these commands will run an ad hoc http static server in your current (or specified) directory, available at http://localhost:8000. Use this power wisely.
+
+Discussion on reddit.
+Python 2.x
+
+$ python -m SimpleHTTPServer 8000
+
+Python 3.x
+
+$ python -m http.server 8000
+
+Twisted (Python)
+
+$ twistd -n web -p 8000 --path .
+
+Or:
+
+$ python -c 'from twisted.web.server import Site; from twisted.web.static import File; from twisted.internet import reactor; reactor.listenTCP(8000, Site(File("."))); reactor.run()'
+
+Depends on Twisted.
+Ruby
+
+$ ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => 8000, :DocumentRoot => Dir.pwd).start'
+
+Credit: Barking Iguana
+Ruby 1.9.2+
+
+$ ruby -run -ehttpd . -p8000
+
+Credit: nobu
+adsf (Ruby)
+
+$ gem install adsf   # install dependency
+$ adsf -p 8000
+
+Credit: twome
+
+No directory listings.
+Sinatra (Ruby)
+
+$ gem install sinatra   # install dependency
+$ ruby -rsinatra -e'set :public_folder, "."; set :port, 8000'
+
+No directory listings.
+Perl
+
+$ cpan HTTP::Server::Brick   # install dependency
+$ perl -MHTTP::Server::Brick -e '$s=HTTP::Server::Brick->new(port=>8000); $s->mount("/"=>{path=>"."}); $s->start'
+
+Credit: Anonymous Monk
+Plack (Perl)
+
+$ cpan Plack   # install dependency
+$ plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root=>".");' -p 8000
+
+Credit: miyagawa
+Mojolicious (Perl)
+
+$ cpan Mojolicious::Lite   # install dependency
+$ perl -MMojolicious::Lite -MCwd -e 'app->static->paths->[0]=getcwd; app->start' daemon -l http://*:8000
+
+No directory listings.
+http-server (Node.js)
+
+$ npm install -g http-server   # install dependency
+$ http-server -p 8000
+
+Note: This server does funky things with relative paths. For example, if you have a file /tests/index.html, it will load index.html if you go to /test, but will treat relative paths as if they were coming from /.
+node-static (Node.js)
+
+$ npm install -g node-static   # install dependency
+$ static -p 8000
+
+No directory listings.
+PHP (>= 5.4)
+
+$ php -S 127.0.0.1:8000
+
+Credit: /u/prawnsalad and MattLicense
+
+No directory listings.
+Erlang
+
+$ erl -s inets -eval 'inets:start(httpd,[{server_name,"NAME"},{document_root, "."},{server_root, "."},{port, 8000},{mime_types,[{"html","text/html"},{"htm","text/html"},{"js","text/javascript"},{"css","text/css"},{"gif","image/gif"},{"jpg","image/jpeg"},{"jpeg","image/jpeg"},{"png","image/png"}]}]).'
+
+Credit: nivertech (with the addition of some basic mime types)
+
+No directory listings.
+busybox httpd
+
+$ busybox httpd -f -p 8000
+
+Credit: lvm
+webfs
+
+$ webfsd -F -p 8000
+
+Depends on webfs.
+IIS Express
+
+C:\> "C:\Program Files (x86)\IIS Express\iisexpress.exe" /path:C:\MyWeb /port:8000
+
+Depends on IIS Express.
+
+Credit: /u/fjantomen
+
+No directory listings. /path must be an absolute path.
+Meta
+
+If you have any suggestions, drop them in the comments below or on the reddit discussion. To get on this list, a solution must:
+
+    serve static files using your current directory (or a specified directory) as the server root,
+    be able to be run with a single, one line command (dependencies are fine if they're a one-time thing),
+    serve basic file types (html, css, js, images) with proper mime types,
+    require no configuration (from files or otherwise) beyond the command itself (no framework-specific servers, etc)
+    must run, or have a mode where it can run, in the foreground (i.e. no daemons)
+
+
+    For PHP >=5.4 you can run
+
+$ php -S localhost:8000
+
+
+
+If you ever use Drupal, drush 5+ has
+
+$ drush rs 8080
+
+
+Another Ruby:
+
+$ gem install adsf
+$ adsf
+
+
+busybox httpd -p $PORT -h $HOME [ -c httpd.conf ]
+
+This is awesome! One note though, re: http-server:
+
+    Note: This server does funky things with relative paths. For example, if you have a file /tests/index.html, it will load index.html if you go to /test, but will treat relative paths as if they were coming from /.
+
+That should be true for any of these. That's just how HTTP/HTML works. If you go to /test/ (note the trailing slash), then relative URLs will be relative to /test/. Relative URLs are always relative to the last slash in the URL.
+
+The server can't control that; resolving relative URLs is the browser's job, and the browser doesn't know that /test is meant to be a directory. What some servers will do for you is redirect to the trailing-slash URL automatically, which other servers listed here may do—I'm not sure.
+
+
+Ruby 1.9.2+:
+
+$ ruby -run -ehttpd . -p8000
+
+
+Just in case you can't install with -g flag in Node.js and node is all you got, try
+npm install connect && echo "var c = require('connect');c.createServer(c.static(__dirname)).listen(8080);" | node
+Note: may get you really weird results + might pollute your folder with node_modules
+
+Perl
+
+$ perl -MIO::All -e 'io(":8080")->fork->accept->(sub { $_[0] < io(-x $1 +? "./$1 |" : $1) if /^GET \/(.*) / })'
+
+Thanks to:
+http://stackoverflow.com/questions/8058793/single-line-python-webserver
+
+I just created srvdir which solves this problem elegantly. It is open source on github and available as a simple binary download with no dependencies for all major operating systems:
+
+srvdir homepage
+srvdir code on github
+
+Unlike all of the other solutions, srvdir serves your directory on a public HTTPS URL with an optional password. This means you can securely share the URL with anyone on the internet and are not restricted to just your local network.
+
+It's also ridiculously simple to use. Serve files in the current directory:
+
+./srvdir
+
+Serve files from multiple named directories simultaneously:
+
+./srvdir /usr/lib /var/www/
+
+
+gem install knod to install dependency
+knod -p 8000
+
+Warning! Knod can also write to and delete from the directory you specify.
+
+Clojure (via Leiningen project management tool):
+
+$ lein simpleton 8080
+
+Note: you should install lein-simpleton plugin first by putting [lein-simpleton "1.3.0"] into the :plugins vector of your :user profile. Profiles are configured in ~/.lein/profiles.clj, if you don't have this file yet, you can start with
+
+$ echo "{:user {:plugins [[lein-simpleton \"1.3.0\"]]}}" > ~/.lein/profiles.clj
+
+
+PowerShell
+
+$Hso=New-Object Net.HttpListener;$Hso.Prefixes.Add("http://+:8000/");$Hso.Start();While ($Hso.IsListening){$HC=$Hso.GetContext();$HRes=$HC.Response;$HRes.Headers.Add("Content-Type","text/plain");$Buf=[Text.Encoding]::UTF8.GetBytes((GC (Join-Path $Pwd ($HC.Request).RawUrl)));$HRes.ContentLength64=$Buf.Length;$HRes.OutputStream.Write($Buf,0,$Buf.Length);$HRes.Close()};$Hso.Stop()
+
+PowerShell from cmd.exe
+
+PowerShell.exe -nop -enc JABIAHMAbwA9AE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAEgAdAB0AHAATABpAHMAdABlAG4AZQByADsAJABIAHMAbwAuAFAAcgBlAGYAaQB4AGUAcwAuAEEAZABkACgAIgBoAHQAdABwADoALwAvACsAOgA4ADAAMAAwAC8AIgApADsAJABIAHMAbwAuAFMAdABhAHIAdAAoACkAOwBXAGgAaQBsAGUAIAAoACQASABzAG8ALgBJAHMATABpAHMAdABlAG4AaQBuAGcAKQB7ACQASABDAD0AJABIAHMAbwAuAEcAZQB0AEMAbwBuAHQAZQB4AHQAKAApADsAJABIAFIAZQBzAD0AJABIAEMALgBSAGUAcwBwAG8AbgBzAGUAOwAkAEgAUgBlAHMALgBIAGUAYQBkAGUAcgBzAC4AQQBkAGQAKAAiAEMAbwBuAHQAZQBuAHQALQBUAHkAcABlACIALAAiAHQAZQB4AHQALwBwAGwAYQBpAG4AIgApADsAJABCAHUAZgA9AFsAVABlAHgAdAAuAEUAbgBjAG8AZABpAG4AZwBdADoAOgBVAFQARgA4AC4ARwBlAHQAQgB5AHQAZQBzACgAKABHAEMAIAAoAEoAbwBpAG4ALQBQAGEAdABoACAAJABQAHcAZAAgACgAJABIAEMALgBSAGUAcQB1AGUAcwB0ACkALgBSAGEAdwBVAHIAbAApACkAKQA7ACQASABSAGUAcwAuAEMAbwBuAHQAZQBuAHQATABlAG4AZwB0AGgANgA0AD0AJABCAHUAZgAuAEwAZQBuAGcAdABoADsAJABIAFIAZQBzAC4ATwB1AHQAcAB1AHQAUwB0AHIAZQBhAG0ALgBXAHIAaQB0AGUAKAAkAEIAdQBmACwAMAAsACQAQgB1AGYALgBMAGUAbgBnAHQAaAApADsAJABIAFIAZQBzAC4AQwBsAG8AcwBlACgAKQB9ADsAJABIAHMAbwAuAFMAdABvAHAAKAApAA==
+
+nodejs
+
+$ npm install startserver -g
+$ server 8080
