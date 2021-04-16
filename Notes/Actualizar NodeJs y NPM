@@ -1,0 +1,162 @@
+NodeJS y npm, instalación en Ubuntu 20.04 | 18.04
+
+NodeJS es un marco de servidor de código abierto basado en JavaScript que se utiliza principalmente para crear aplicaciones de servidor de back-end con tiempo de ejecución de JavaScript. Se basa en el motor V8 JavaScript de Chrome. Npm es el administrador de paquetes predeterminado para NodeJS.
+
+Se utiliza principalmente para la programación asincrónica y es un marco muy ligero, lo que lo hace más rápido que otros. También es compatible con la mayoría de los sistemas operativos populares. Diferentes tipos de aplicaciones, como las aplicaciones web, las aplicaciones de línea de comandos, etc, se pueden desarrollar con este marco utilizando Ubuntu.
+
+
+NodeSource es el repositorio de nodos de nivel empresarial propio de la compañía que mantienen y contiene las últimas versiones de NodeJS. Desde NodeSource vamos a poder instalar una versión específica de NodeJS.
+
+Para instalar NodeJS desde NodeSource, simplemente habrá que ejecutar alguno de los siguientes comandos para agregar la versión específica que nos interese. Para hacerlo tendremos que disponer de curl instalado. Si no cuentas con esta herramienta todavía, puedes instalarla con el comando:
+
+	
+$ sudo apt install curl
+
+Ahora para instalar la última versión (versión 14), en una terminal (Ctrl+Alt+T) añadiremos este PPA:
+
+$ add repo nodejs 14
+
+$ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+
+
+
+Para instalar la versión 12, no habrá más que ejecutar el comando:
+
+$ add repo nodeJS 12
+	
+$ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+
+
+Para instalar la versión LTS (versión 10), el PPA a utilizar será:
+
+$ add repo nodejs 10
+
+$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+
+Después de añadir alguno de estos PPA, ya podremos instalar la última versión de NodeJS desde el repositorio que elijamos. Si añadimos varios repositorios, se instalará la última versión de NodeJS y no la LTS.
+
+Instalar NodeJS y npm
+
+Para la instalación, en una terminal (Ctrl+Alt+T) tendremos que ejecutar el comando:
+
+instalar nodejs con apt
+	
+$ sudo apt install nodejs
+
+Una vez terminada la instalación, los módulos NodeJS y npm deben estar instalados y listos para usar. Podremos usar los siguientes comandos para ver el número de versión instalado.
+
+	
+$ node --version
+ 
+$ npm --version
+
+Los comandos enumerarán la versión instalada de node y npm:
+
+versión de nodejs y npm instaladas
+
+Se pueden consultar todas las instrucciones de instalación disponibles desde la página en GitHub del proyecto.
+
+https://github.com/nodesource/distributions#installation-instructions
+
+
+
+Instalar NodeJS y npm a través de Snap
+
+Otra forma de instalar NodeJS es a través de la administración de paquetes Snap. 
+https://snapcraft.io/node
+
+
+Esta podría ser la forma más fácil de hacerlo.
+
+Los snaps son paquetes de software fáciles de crear e instalar. Se trata de aplicaciones empaquetadas con todas sus dependencias para ejecutarse en todas las distribuciones populares de Gnu/Linux desde una sola compilación.
+
+Para instalar la última versión (versión 14) en una terminal (Ctrl+Alt+T) ejecuta:
+
+instalación de NodeJs 14 snap
+
+	
+$ sudo snap install node --channel=14/stable --classic
+
+
+La versión 13 podremos instalarla ejecutando el comando:
+
+instalación nodeJs 13 snap
+
+	
+$ sudo snap install node --channel=13/stable --classic
+
+Para instalar la versión 10, el comando a utilizar será el siguiente:
+
+instalación NodeJS 10 snap
+
+	
+$ sudo snap install node --channel=10/stable --classic
+
+
+Probando el servidor
+
+Para probar si el servidor web está instalado correctamente, vamos a crear un archivo de prueba llamado http_server.js en nuestra carpeta de inicio utilizando nuestro editor favorito:
+
+----------------------------
+	
+$ cd ~/
+ 
+$ vim http_server.js
+
+Después vamos a copiar y pegar el siguiente contenido en el archivo:
+
+archivo de prueba del servidor
+
+
+----------------------------
+	
+const http = require('http');
+ 
+const hostname = '127.0.0.1';
+const port = 3000;
+ 
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Prueba de Nodejs para Ubunlog');
+});
+ 
+server.listen(port, hostname, () => {
+  console.log(`Servidor funcionando en http://${hostname}:${port}/`);
+});
+
+----------------------------
+
+Después de esto, guardamos el archivo. Ahora lo ejecutamos con con el siguiente comando para iniciar el servidor:
+
+	
+$ node http_server.js
+
+Deberíamos ver una salida que como la siguiente en la terminal:
+
+salida por consola del ejemplo
+
+Ahora si abrimos nuestro navegador favorito y nos dirigimos al nombre de host del servidor o la dirección IP seguida del puerto 3000, deberíamos ver una página de muestra como la siguiente:
+
+prueba en firefox
+
+	
+http://localhost:3000
+
+Para obtener más información sobre NodeJS, los usuarios podemos visitar la página del proyecto.
+https://nodejs.org/en/
+
+
+El contenido del artículo se adhiere a nuestros principios de ética editorial. Para notificar un error pincha aquí.
+
+Ruta completa hacia el artículo: Ubunlog » 
+https://ubunlog.com/
+
+Ubuntu » 
+https://ubunlog.com/category/ubuntu/
+
+NodeJS y npm, instalación en Ubuntu 20.04 | 18.04
+
+Referencia:
+https://ubunlog.com/nodejs-npm-instalacion-ubuntu-20-04-18-04/
+
